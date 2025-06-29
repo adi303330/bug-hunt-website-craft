@@ -15,6 +15,48 @@ const Index = () => {
     });
   };
 
+  const handleJoinAsTester = () => {
+    toast({
+      title: "Join Our Tester Community!",
+      description: "Thank you for your interest! We'll send you an application form shortly.",
+    });
+  };
+
+  const handleSignIn = () => {
+    toast({
+      title: "Sign In",
+      description: "Redirecting to sign in page...",
+    });
+  };
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Get Started",
+      description: "Let's get you set up with a new account!",
+    });
+  };
+
+  const handlePricingPlan = (plan: string) => {
+    toast({
+      title: `${plan} Plan Selected`,
+      description: `You've selected the ${plan} plan. Redirecting to checkout...`,
+    });
+  };
+
+  const handleContactSales = () => {
+    toast({
+      title: "Contact Sales",
+      description: "Our sales team will reach out to you within 24 hours.",
+    });
+  };
+
+  const handleNavigation = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* Header */}
@@ -27,11 +69,11 @@ const Index = () => {
             <span className="text-xl font-bold text-gray-900">TesterWork</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-gray-600 hover:text-blue-600 transition-colors">Services</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</a>
-            <a href="#pricing" className="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
-            <Button variant="outline" className="mr-2">Sign In</Button>
-            <Button>Get Started</Button>
+            <button onClick={() => handleNavigation('services')} className="text-gray-600 hover:text-blue-600 transition-colors">Services</button>
+            <button onClick={() => handleNavigation('how-it-works')} className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</button>
+            <button onClick={() => handleNavigation('pricing')} className="text-gray-600 hover:text-blue-600 transition-colors">Pricing</button>
+            <Button variant="outline" className="mr-2" onClick={handleSignIn}>Sign In</Button>
+            <Button onClick={handleGetStarted}>Get Started</Button>
           </nav>
         </div>
       </header>
@@ -53,7 +95,7 @@ const Index = () => {
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8" onClick={handleStartTesting}>
               Start Testing Now <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8">
+            <Button size="lg" variant="outline" className="text-lg px-8" onClick={handleJoinAsTester}>
               Join as Tester
             </Button>
           </div>
@@ -235,7 +277,7 @@ const Index = () => {
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />2 Devices</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />Basic Report</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />48h Delivery</div>
-                <Button className="w-full mt-6">Get Started</Button>
+                <Button className="w-full mt-6" onClick={() => handlePricingPlan('Basic')}>Get Started</Button>
               </CardContent>
             </Card>
 
@@ -254,7 +296,7 @@ const Index = () => {
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />Detailed Report</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />24h Delivery</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />Video Reports</div>
-                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">Get Started</Button>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" onClick={() => handlePricingPlan('Professional')}>Get Started</Button>
               </CardContent>
             </Card>
 
@@ -270,7 +312,7 @@ const Index = () => {
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />Premium Report</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />12h Delivery</div>
                 <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" />Dedicated Manager</div>
-                <Button className="w-full mt-6">Contact Sales</Button>
+                <Button className="w-full mt-6" onClick={handleContactSales}>Contact Sales</Button>
               </CardContent>
             </Card>
           </div>
