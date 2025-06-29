@@ -3,8 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle, Users, Zap, Shield, Clock, Star, Target } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const { toast } = useToast();
+
+  const handleStartTesting = () => {
+    toast({
+      title: "Get Started with Testing!",
+      description: "We'll connect you with expert testers shortly. Please check your email for next steps.",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* Header */}
@@ -40,7 +50,7 @@ const Index = () => {
             Connect with expert testers worldwide. Get comprehensive testing for your web and mobile applications with detailed reports and actionable insights.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8" onClick={handleStartTesting}>
               Start Testing Now <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8">
